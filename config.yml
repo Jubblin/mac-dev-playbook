@@ -1,7 +1,7 @@
 ---
 downloads: ~/.ansible-downloads/
 
-configure_dotfiles: true
+configure_dotfiles: false
 configure_terminal: true
 configure_osx: true
 
@@ -17,10 +17,22 @@ dockitems_remove:
  - Mail
  - Maps
  - Contacts
+ - iTerm
+ - Facetime
+ - Messages
+ - Reminders
 
 dockitems_persist:
   - name: "Microsoft Outlook"
     path: "/Applications/Microsoft Outlook.app/"
+  - name: Lens
+    path: "/Applications/Lens.app"
+  - name: "Google Chrome"
+    path: "/Applications/Google Chrome.app"
+  - name: "Visual Studio Code - Insiders"
+    path: "/Applications/Visual Studio Code - Insiders.app"
+  - name: "Cisco AnyConnect Secure Mobility Client"
+    path: "/Applications/Cisco/Cisco AnyConnect Secure Mobility Client.app"
 
 configure_sudoers: true
 # Example:
@@ -28,15 +40,9 @@ sudoers_custom_config: |
   # Allow users in admin group to use sudo with no password.
   %admin ALL=(ALL) NOPASSWD: ALL
 
-dotfiles_repo: https://github.com/geerlingguy/dotfiles.git
-dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: ~/Development/GitHub/dotfiles
-dotfiles_files:
-  - .zshrc
-  - .gitignore
-  - .inputrc
-  - .osx
-  - .vimrc
+homebrew_uninstalled_packages:
+  - syncthing
+  - iterm
 
 homebrew_installed_packages:
   - nmap
@@ -44,6 +50,8 @@ homebrew_installed_packages:
   - awscli
   - direnv
   - zsh-history-substring-search
+  - kubectl
+  - tfenv
 
 homebrew_taps:
   - homebrew/core
@@ -51,18 +59,20 @@ homebrew_taps:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - homebrew/cask-versions/visual-studio-code-insiders
   - firefox
   - google-chrome
+  - lens
   - microsoft-teams
   - rancher
   - slack
   - vagrant
+  - viscosity
+  - homebrew/cask-versions/visual-studio-code-insiders
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps: 
-- { id: 985367838, name: "Microsoft Outlook" }
-- { id: 926036361, name: "LastPass Password Manager" }
+  - { id: 985367838, name: "Microsoft Outlook" }
+  - { id: 926036361, name: "LastPass Password Manager" }
 # mas_email: ""
 # mas_password: ""
 
